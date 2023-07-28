@@ -3,7 +3,7 @@ import { AppDataSource } from "../data-source";
 import { User } from "../entities/user.entitie";
 import { AppError } from "../errors/appError";
 
-const userExistMiddleware = async (
+const findUserMiddleware = async (
   req: Request,
   res: Response,
   next: NextFunction
@@ -12,15 +12,15 @@ const userExistMiddleware = async (
 
   const findUser = await userRepository.findOne({
     where: {
-      email_login: req.body.email,
+      id: Number(req.params.id),
     },
   });
 
-  if (findUser) {
-    throw new AppError("User alredy exists", 409);
+  if (!findUser) {
+    throw new AppError("User not found", 404);
   }
 
   return next();
 };
 
-export { userExistMiddleware };
+export { findUserMiddleware };

@@ -6,20 +6,20 @@ import {
   TUserRequest,
   TUserResponse,
 } from "../../interfaces/user.interfaces";
-import { userSchemaResposne } from "../../schemas/user.schema";
+import { userSchemaResponse } from "../../schemas/user.schema";
 
 const createUserService = async (
   data: TUserRequest
 ): Promise<TUserResponse> => {
-  const userRepository = AppDataSource.getMongoRepository(User);
+  const userRepository = AppDataSource.getRepository(User);
 
   data.password = await hash(data.password, 10);
-
+  data.emails.push(data.email_login);
   const user = userRepository.create(data);
 
   await userRepository.save(user);
 
-  return userSchemaResposne.parse(user);
+  return userSchemaResponse.parse(user);
 };
 
 export { createUserService };

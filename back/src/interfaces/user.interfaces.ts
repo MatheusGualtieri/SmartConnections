@@ -2,13 +2,16 @@ import { z } from "zod";
 import {
   userSchema,
   userSchemaRequest,
-  userSchemaResposne,
+  userSchemaResponse,
 } from "../schemas/user.schema";
+import { DeepPartial } from "typeorm";
 
 type TUser = z.infer<typeof userSchema>;
 
 type TUserRequest = z.infer<typeof userSchemaRequest>;
 
-type TUserResponse = z.infer<typeof userSchemaResposne>;
+type TUserResponse = z.infer<typeof userSchemaResponse>;
 
-export { TUser, TUserRequest, TUserResponse };
+type TUserUpdate = DeepPartial<TUserRequest>;
+
+export { TUser, TUserRequest, TUserResponse, TUserUpdate };
