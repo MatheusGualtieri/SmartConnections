@@ -11,7 +11,21 @@ import { userSchemaRequest, userSchemaUpdate } from "../schemas/user.schema";
 import { findUserMiddleware } from "../middlewares/findUser.middleware";
 import { tokenValidationMiddleware } from "../middlewares/tokenValidation.middleware";
 import { updateUserValidationMiddleware } from "../middlewares/updateUserValidation.middleware";
+import {
+  createContactController,
+  deleteContactController,
+  listContactController,
+  updateContactController,
+} from "../controllers/contact.controllers";
+import {
+  contactSchemaRequest,
+  contactSchemaUpdate,
+} from "../schemas/contact.schema";
+import { findContactMiddleware } from "../middlewares/findContact.middleware";
+import { isOwnerMiddleware } from "../middlewares/isOwner.middleware";
 const userRoutes = Router();
+
+//User
 
 userRoutes.post(
   "",
@@ -20,7 +34,13 @@ userRoutes.post(
   createUserController
 );
 
-userRoutes.get("/:id", findUserMiddleware, retrieveUserController);
+userRoutes.get(
+  "/:id",
+  tokenValidationMiddleware,
+  updateUserValidationMiddleware,
+  findUserMiddleware,
+  retrieveUserController
+);
 
 userRoutes.patch(
   "/:id",
@@ -37,6 +57,43 @@ userRoutes.delete(
   tokenValidationMiddleware,
   updateUserValidationMiddleware,
   deleteUserController
+);
+
+//Contacts
+
+userRoutes.post(
+  "/:id/contacts",
+  tokenValidationMiddleware,
+  findUserMiddleware,
+  updateUserValidationMiddleware,
+  validateBodyMiddleware(contactSchemaRequest),
+  createContactController
+);
+
+userRoutes.get(
+  "/:id/contacts",
+  tokenValidationMiddleware,
+  findUserMiddleware,
+  listContactController
+);
+
+userRoutes.patch(
+  "/:id/contacts/:contactId",
+  tokenValidationMiddleware,
+  findUserMiddleware,
+  findContactMiddleware,
+  isOwnerMiddleware,
+  validateBodyMiddleware(contactSchemaUpdate),
+  updateContactController
+);
+
+userRoutes.delete(
+  "/:id/contacts/:contactId",
+  tokenValidationMiddleware,
+  findUserMiddleware,
+  findContactMiddleware,
+  isOwnerMiddleware,
+  deleteContactController
 );
 
 export { userRoutes };

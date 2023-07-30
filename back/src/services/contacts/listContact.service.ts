@@ -11,7 +11,7 @@ const listContactService = async (
   const contacts = await contactRepository
     .createQueryBuilder("contact")
     .select("contact")
-    .where("contact.user_id = :id", { id: userId })
+    .where("contact.userId = :id", { id: userId })
     .getMany();
 
   return contactsSchemaResponse.parse(contacts);

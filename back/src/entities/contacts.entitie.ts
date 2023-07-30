@@ -18,9 +18,6 @@ class Contact {
   @Column({ type: "varchar", array: true, length: 120 })
   emails: string[];
 
-  @Column()
-  password: string;
-
   @Column("int", { array: true })
   phone: number[];
 

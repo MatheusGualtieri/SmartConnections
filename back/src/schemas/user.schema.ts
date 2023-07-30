@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { contactSchema } from "./contact.schema";
 
 const userSchema = z.object({
   id: z.number(),
@@ -7,10 +8,15 @@ const userSchema = z.object({
   emails: z.array(z.string().max(120).email()),
   password: z.string(),
   createdAt: z.string(),
-  phone: z.array(z.number()),
+  phone: z.array(z.number()).nonempty(),
+  contacts: z.array(contactSchema),
 });
 
-const userSchemaRequest = userSchema.omit({ id: true, createdAt: true });
+const userSchemaRequest = userSchema.omit({
+  id: true,
+  createdAt: true,
+  contacts: true,
+});
 
 const userSchemaResponse = userSchema.omit({ password: true });
 

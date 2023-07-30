@@ -5,7 +5,10 @@ import { userSchemaResponse } from "../../schemas/user.schema";
 
 const retrieveUserService = async (id: number): Promise<TUserResponse> => {
   const userRepository = AppDataSource.getRepository(User);
-  const user = await userRepository.findOneBy({ id: id });
+  const user = await userRepository.findOne({
+    relations: { contacts: true },
+    where: { id: id },
+  });
 
   return userSchemaResponse.parse(user);
 };

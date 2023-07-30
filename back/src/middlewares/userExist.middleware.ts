@@ -12,7 +12,7 @@ const userExistMiddleware = async (
 
   const findUser = await userRepository.findOne({
     where: {
-      email_login: req.body.email,
+      email_login: req.body.email_login,
     },
   });
 

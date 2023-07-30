@@ -14,7 +14,16 @@ const createUserService = async (
   const userRepository = AppDataSource.getRepository(User);
 
   data.password = await hash(data.password, 10);
-  data.emails.push(data.email_login);
+  let isEmailLoginInEmails: boolean = false;
+  for (let i = 0; i < data.emails.length; i++) {
+    if (data.email_login == data.emails[i]) {
+      isEmailLoginInEmails = true;
+    }
+  }
+  if (!isEmailLoginInEmails) {
+    data.emails.push(data.email_login);
+  }
+
   const user = userRepository.create(data);
 
   await userRepository.save(user);
