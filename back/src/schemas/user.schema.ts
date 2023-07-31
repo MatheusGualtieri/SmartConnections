@@ -9,7 +9,7 @@ const userSchema = z.object({
   password: z.string(),
   createdAt: z.string(),
   phone: z.array(z.number()).nonempty(),
-  contacts: z.array(contactSchema),
+  contacts: z.array(contactSchema).optional(),
 });
 
 const userSchemaRequest = userSchema.omit({

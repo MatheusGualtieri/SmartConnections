@@ -34,7 +34,7 @@ const loginService = async (data: TLogin) => {
     }
   );
 
-  return token;
+  return { token, user };
 };
 
 export { loginService };
