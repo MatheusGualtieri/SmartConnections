@@ -13,7 +13,7 @@ export const App = () => {
       <AuthProvider>
         <UserProvider>
           <ContactProvider>
-            <RoutesMain />;
+            <RoutesMain />
           </ContactProvider>
         </UserProvider>
       </AuthProvider>

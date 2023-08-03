@@ -4,9 +4,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useAuth } from "../../hooks/useAuth";
 import { useNavigate } from "react-router";
 import {
+  BackgroundImage,
+  CellphoneImage,
+  HeaderLogo,
   LoginContainer,
+  LoginHeader,
   LoginSection,
   LogoSection,
+  LogoStyled,
   StyledLoginForm,
   StyledLoginPage,
 } from "./style";
@@ -28,29 +33,38 @@ export const Login = () => {
   const navigate = useNavigate();
 
   return (
-    <StyledLoginPage>
-      <LogoSection></LogoSection>
-      <LoginSection>
-        <LoginContainer>
-          <StyledH1>Welcome Back</StyledH1>
-          <StyledLoginForm onSubmit={handleSubmit(submit)}>
-            <label htmlFor="email">email</label>
-            <InputMain type="email" id="email" {...register("email_login")} />
-            <label htmlFor="password">password</label>
-            <InputMain
-              type="password"
-              id="password"
-              {...register("password")}
-            />
+    <>
+      <StyledLoginPage>
+        <LogoSection>
+          <LogoStyled />
+          <CellphoneImage />
+        </LogoSection>
+        <LoginSection>
+          <LoginHeader>
+            <HeaderLogo />
+          </LoginHeader>
+          <LoginContainer>
+            <StyledH1>Welcome Back</StyledH1>
+            <StyledLoginForm onSubmit={handleSubmit(submit)}>
+              <label htmlFor="email">email</label>
+              <InputMain type="email" id="email" {...register("email_login")} />
+              <label htmlFor="password">password</label>
+              <InputMain
+                type="password"
+                id="password"
+                {...register("password")}
+              />
 
-            <ButtonBrand type="submit">Login</ButtonBrand>
-          </StyledLoginForm>
-          <StyledH2>Don't have an Accont?</StyledH2>
-          <ButtonBrand type="button" onClick={() => navigate("/signup")}>
-            Signup
-          </ButtonBrand>
-        </LoginContainer>
-      </LoginSection>
-    </StyledLoginPage>
+              <ButtonBrand type="submit">Login</ButtonBrand>
+            </StyledLoginForm>
+            <StyledH2>Don't have an Accont?</StyledH2>
+            <ButtonBrand type="button" onClick={() => navigate("/signup")}>
+              Signup
+            </ButtonBrand>
+          </LoginContainer>
+        </LoginSection>
+      </StyledLoginPage>
+      <BackgroundImage />
+    </>
   );
 };

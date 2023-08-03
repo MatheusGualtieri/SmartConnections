@@ -6,9 +6,9 @@ import {
 } from "../../schemas/contactValidator";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Modal } from "../Modal";
-import { useAuth } from "../../hooks/useAuth";
 import { InputMain } from "../../styles/Inputs";
 import { ButtonBrandSecondary } from "../../styles/Buttons";
+import { HeaderModal } from "../HeaderModal";
 
 interface IModalCreateContactProps {
   toggleModal: () => void;
@@ -39,7 +39,9 @@ export const ModalEditContact = ({
 
   return (
     <Modal toggleModal={toggleModal}>
-      <h1>Edit Contact</h1>
+      <HeaderModal toggleModal={toggleModal}>
+        <h1>Edit Contact</h1>
+      </HeaderModal>
       <form onSubmit={handleSubmit(submit)}>
         <label htmlFor="full-name">full name*</label>
         <InputMain

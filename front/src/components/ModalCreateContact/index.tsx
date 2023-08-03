@@ -8,6 +8,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Modal } from "../Modal";
 import { InputMain } from "../../styles/Inputs";
 import { ButtonBrandSecondary } from "../../styles/Buttons";
+import { HeaderModal } from "../HeaderModal";
 
 interface IModalCreateContactProps {
   toggleModal: () => void;
@@ -34,7 +35,9 @@ export const ModalCreateContact = ({
 
   return (
     <Modal toggleModal={toggleModal}>
-      <h1>Create Account</h1>
+      <HeaderModal toggleModal={toggleModal}>
+        <h1>Create Contact</h1>
+      </HeaderModal>
       <form onSubmit={handleSubmit(submit)}>
         <label htmlFor="full-name">full name*</label>
         <InputMain type="text" id="full-name" {...register("full_name")} />

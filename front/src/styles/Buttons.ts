@@ -9,8 +9,10 @@ export const ButtonBrand = styled.button`
   border-radius: var(--border-radius-1);
   font-size: var(--font-size-2);
   transition: 0.5s;
+  cursor: pointer;
 
-  :hover {
+  &:hover {
+    transition: 0.5s;
     background-color: var(--grey-4);
     color: var(--brand-1);
   }
@@ -25,14 +27,16 @@ export const ButtonBrandSecondary = styled.button`
   border-radius: var(--border-radius-1);
   font-size: var(--font-size-2);
   transition: 0.5s;
+  cursor: pointer;
 
-  :hover {
-    background-color: var(--brand-2);
+  &:hover {
+    transition: 0.5s;
+    background-color: var(--grey-4);
+    color: var(--brand-1);
   }
 `;
 
 export const ButtonNegative = styled.button`
-  height: 30px;
   padding: 0.5rem 1rem;
   background-color: transparent;
   color: var(--negative);
@@ -40,21 +44,44 @@ export const ButtonNegative = styled.button`
   border-radius: var(--border-radius-1);
   font-size: var(--font-size-2);
   transition: 0.5s;
+  cursor: pointer;
 
-  :hover {
-    background-color: var(--grey-4);
-    color: var(--brand-1);
+  &:hover {
+    transition: 0.5s;
+    background-color: var(--negative);
+    color: var(--grey-4);
   }
 `;
 
 export const ButtonA = styled.a`
-  width: 100%;
+  width: fit-content;
   padding: 0.5rem 1rem;
   color: var(--grey-2);
   font-size: var(--font-size-2);
   transition: 0.5s;
+  border: 2px solid var(--grey-5);
+  cursor: pointer;
 
-  :hover {
+  &:hover {
+    border-bottom: 2px solid var(--brand-1);
+    transition: 0.5s;
     color: var(--brand-1);
+  }
+`;
+
+export const ButtonIcon = styled.button`
+  border: none;
+  padding: none;
+  background-color: transparent;
+  color: var(--grey-5);
+  svg {
+    width: 25px;
+    height: 25px;
+    transition: 0.5s;
+    cursor: pointer;
+  }
+  svg:hover {
+    filter: brightness(0.85);
+    transition: 0.5s;
   }
 `;

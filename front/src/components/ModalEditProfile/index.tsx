@@ -7,6 +7,7 @@ import { TUserUpdate, userSchemaUpdate } from "../../schemas/userValidator";
 import { useAuth } from "../../hooks/useAuth";
 import { InputMain } from "../../styles/Inputs";
 import { ButtonBrandSecondary, ButtonNegative } from "../../styles/Buttons";
+import { HeaderModal } from "../HeaderModal";
 
 interface IModalCreateContactProps {
   toggleModal: () => void;
@@ -37,7 +38,9 @@ export const ModalEditProfile = ({ toggleModal }: IModalCreateContactProps) => {
 
   return (
     <Modal toggleModal={toggleModal}>
-      <h1>Edit Profile</h1>
+      <HeaderModal toggleModal={toggleModal}>
+        <h1>Edit Profile</h1>
+      </HeaderModal>
       <form onSubmit={handleSubmit(submit)}>
         <label htmlFor="full-name">full name*</label>
         <InputMain

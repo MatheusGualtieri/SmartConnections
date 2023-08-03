@@ -16,14 +16,19 @@ export const StyledModal = styled.div`
     flex-direction: column;
     gap: 1rem;
     background-color: var(--grey-4);
-    padding: 20px;
     box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.25);
+    height: fit-content;
     width: 100%;
-    max-width: 300px;
+    max-width: 400px;
+    border-radius: var(--border-radius-1);
   }
   div form {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    padding: 1rem;
+  }
+  div form button {
+    margin-top: 1rem;
   }
 `;
