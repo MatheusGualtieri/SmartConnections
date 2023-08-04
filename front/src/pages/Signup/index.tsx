@@ -12,7 +12,7 @@ import {
   StyledSignupForm,
   StyledSignupPage,
 } from "./style";
-import { StyledH1 } from "../../styles/Fonts";
+import { StyledError, StyledH1 } from "../../styles/Fonts";
 
 export const Signup = () => {
   const {
@@ -40,22 +40,27 @@ export const Signup = () => {
           <StyledSignupForm onSubmit={handleSubmit(submit)}>
             <label htmlFor="full-name">full name*</label>
             <InputMain type="text" id="full-name" {...register("full_name")} />
+            <StyledError>{errors.full_name?.message}</StyledError>
 
             <label htmlFor="email_login">email*</label>
             <InputMain
-              type="email"
+              type="text"
               id="email_login"
               {...register("email_login")}
             />
+            <StyledError>{errors.email_login?.message}</StyledError>
 
             <label htmlFor="email-2">email secondary</label>
-            <InputMain type="email" id="email-2" {...register("emails.0")} />
+            <InputMain type="text" id="email-2" {...register("emails.0")} />
+            <StyledError>{errors.emails?.message}</StyledError>
 
             <label htmlFor="phone">phone*</label>
             <InputMain type="number" id="phone" {...register("phone.0")} />
+            <StyledError>{errors.phone?.message}</StyledError>
 
             <label htmlFor="phone-2">phone secondary</label>
             <InputMain type="number" id="phone-2" {...register("phone.1")} />
+            <StyledError>{errors.phone?.message}</StyledError>
 
             <label htmlFor="password">password*</label>
             <InputMain
@@ -63,6 +68,7 @@ export const Signup = () => {
               id="password"
               {...register("password")}
             />
+            <StyledError>{errors.password?.message}</StyledError>
 
             <ButtonBrand type="submit">Confirm</ButtonBrand>
           </StyledSignupForm>

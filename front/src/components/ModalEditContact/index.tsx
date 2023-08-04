@@ -35,8 +35,6 @@ export const ModalEditContact = ({
     updateContact(data, contactId);
   };
 
-  console.log(errors);
-
   return (
     <Modal toggleModal={toggleModal}>
       <HeaderModal toggleModal={toggleModal}>
@@ -58,13 +56,14 @@ export const ModalEditContact = ({
           defaultValue={contact?.emails[0]}
           {...register("emails.0")}
         />
+        {errors.emails?.message}
 
         <label htmlFor="email-2">email secondary</label>
         <InputMain
           type="email"
           id="email-2"
           defaultValue={contact?.emails[1]}
-          {...register("emails.0")}
+          {...register("emails.1")}
         />
 
         <label htmlFor="phone">phone*</label>

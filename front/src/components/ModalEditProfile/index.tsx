@@ -36,6 +36,8 @@ export const ModalEditProfile = ({ toggleModal }: IModalCreateContactProps) => {
     navigate("/");
   };
 
+  console.log(errors);
+
   return (
     <Modal toggleModal={toggleModal}>
       <HeaderModal toggleModal={toggleModal}>
@@ -81,6 +83,9 @@ export const ModalEditProfile = ({ toggleModal }: IModalCreateContactProps) => {
           defaultValue={user?.phone[0]}
           {...register("phone.1")}
         />
+
+        <label htmlFor="password">password*</label>
+        <InputMain type="password" id="password" {...register("password")} />
 
         <ButtonBrandSecondary type="submit">Confirm</ButtonBrandSecondary>
         <ButtonNegative type="button" onClick={submitDelete}>

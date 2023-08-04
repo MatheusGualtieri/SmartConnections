@@ -31,3 +31,8 @@ export const StyledLabel1 = styled.p`
 export const StyledLabel2 = styled.p`
   font-size: var(--text-size-3);
 `;
+
+export const StyledError = styled.p`
+  font-size: var(--text-size-2);
+  color: yellow;
+`;

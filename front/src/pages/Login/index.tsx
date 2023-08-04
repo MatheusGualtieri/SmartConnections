@@ -17,10 +17,14 @@ import {
 } from "./style";
 import { ButtonBrand } from "../../styles/Buttons";
 import { InputMain } from "../../styles/Inputs";
-import { StyledH1, StyledH2 } from "../../styles/Fonts";
+import { StyledError, StyledH1, StyledH2 } from "../../styles/Fonts";
 
 export const Login = () => {
-  const { register, handleSubmit } = useForm<TLogin>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<TLogin>({
     resolver: zodResolver(loginSchema),
   });
 
@@ -47,14 +51,16 @@ export const Login = () => {
             <StyledH1>Welcome Back</StyledH1>
             <StyledLoginForm onSubmit={handleSubmit(submit)}>
               <label htmlFor="email">email</label>
-              <InputMain type="email" id="email" {...register("email_login")} />
+              <InputMain type="text" id="email" {...register("email_login")} />
+
+              <StyledError>{errors.email_login?.message}</StyledError>
               <label htmlFor="password">password</label>
               <InputMain
                 type="password"
                 id="password"
                 {...register("password")}
               />
-
+              <StyledError>{errors.password?.message}</StyledError>
               <ButtonBrand type="submit">Login</ButtonBrand>
             </StyledLoginForm>
             <StyledH2>Don't have an Accont?</StyledH2>

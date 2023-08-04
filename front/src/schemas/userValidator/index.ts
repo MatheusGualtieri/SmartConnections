@@ -4,12 +4,12 @@ import { DeepPartial } from "react-hook-form";
 
 export const userSchema = z.object({
   id: z.number(),
-  full_name: z.string(),
-  email_login: z.string().max(120).email(),
+  full_name: z.string().nonempty("Full Name is required"),
+  email_login: z.string().max(120).email("Must be an email"),
   emails: z.array(z.string().max(120).email()),
-  password: z.string(),
+  password: z.string().nonempty("Password is required"),
   createdAt: z.string(),
-  phone: z.array(z.any()).nonempty(),
+  phone: z.any().array().nonempty("At least one phone is required"),
   contacts: z.array(contactSchema),
 });
 
