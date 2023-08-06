@@ -32,3 +32,5 @@ For runnin the project, just use npm run dev on both folders(back and front)
 ```bash
 npm run dev
 ```
+# Documentation
+You can acces the documentation for the API after running the back project, being http://localhost:3000/docs
