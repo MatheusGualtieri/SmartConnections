@@ -36,16 +36,16 @@ userRoutes.post(
 
 userRoutes.get(
   "/:id",
+  findUserMiddleware,
   tokenValidationMiddleware,
   updateUserValidationMiddleware,
-  findUserMiddleware,
   retrieveUserController
 );
 
 userRoutes.patch(
   "/:id",
-  tokenValidationMiddleware,
   findUserMiddleware,
+  tokenValidationMiddleware,
   updateUserValidationMiddleware,
   validateBodyMiddleware(userSchemaUpdate),
   updateUserController
@@ -63,8 +63,8 @@ userRoutes.delete(
 
 userRoutes.post(
   "/:id/contacts",
-  tokenValidationMiddleware,
   findUserMiddleware,
+  tokenValidationMiddleware,
   updateUserValidationMiddleware,
   validateBodyMiddleware(contactSchemaRequest),
   createContactController
@@ -72,15 +72,15 @@ userRoutes.post(
 
 userRoutes.get(
   "/:id/contacts",
-  tokenValidationMiddleware,
   findUserMiddleware,
+  tokenValidationMiddleware,
   listContactController
 );
 
 userRoutes.patch(
   "/:id/contacts/:contactId",
-  tokenValidationMiddleware,
   findUserMiddleware,
+  tokenValidationMiddleware,
   findContactMiddleware,
   isOwnerMiddleware,
   validateBodyMiddleware(contactSchemaUpdate),
@@ -89,9 +89,9 @@ userRoutes.patch(
 
 userRoutes.delete(
   "/:id/contacts/:contactId",
-  tokenValidationMiddleware,
   findUserMiddleware,
   findContactMiddleware,
+  tokenValidationMiddleware,
   isOwnerMiddleware,
   deleteContactController
 );

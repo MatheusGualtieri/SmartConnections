@@ -8,7 +8,7 @@ const userSchema = z.object({
   emails: z.array(z.string().max(120).email()),
   password: z.string(),
   createdAt: z.string(),
-  phone: z.array(z.number()).nonempty(),
+  phone: z.array(z.any()).nonempty(),
   contacts: z.array(contactSchema).optional(),
 });
 

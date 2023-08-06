@@ -18,7 +18,7 @@ class Contact {
   @Column({ type: "varchar", array: true, length: 120 })
   emails: string[];
 
-  @Column("int", { array: true })
+  @Column("bigint", { array: true })
   phone: number[];
 
   @CreateDateColumn({ type: "date" })

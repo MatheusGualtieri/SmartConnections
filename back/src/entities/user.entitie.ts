@@ -24,7 +24,7 @@ class User {
   @Column()
   password: string;
 
-  @Column("int", { array: true })
+  @Column("bigint", { array: true })
   phone: number[];
 
   @CreateDateColumn({ type: "date" })

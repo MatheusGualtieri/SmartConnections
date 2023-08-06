@@ -5,7 +5,7 @@ const contactSchema = z.object({
   full_name: z.string(),
   emails: z.array(z.string().max(120).email()),
   createdAt: z.string(),
-  phone: z.array(z.number()),
+  phone: z.array(z.any()).nonempty(),
 });
 
 const contactSchemaRequest = contactSchema.omit({ id: true, createdAt: true });
