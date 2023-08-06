@@ -3,7 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Modal } from "../Modal";
 import { useNavigate } from "react-router";
 import { useUser } from "../../hooks/useUser";
-import { TUserUpdate, userSchemaUpdate } from "../../schemas/userValidator";
+import { TUserUpdate, userSchemaUpdate2 } from "../../schemas/userValidator";
 import { useAuth } from "../../hooks/useAuth";
 import { InputMain } from "../../styles/Inputs";
 import { ButtonBrandSecondary, ButtonNegative } from "../../styles/Buttons";
@@ -19,7 +19,7 @@ export const ModalEditProfile = ({ toggleModal }: IModalCreateContactProps) => {
     handleSubmit,
     formState: { errors },
   } = useForm<TUserUpdate>({
-    resolver: zodResolver(userSchemaUpdate),
+    resolver: zodResolver(userSchemaUpdate2),
   });
 
   const { user } = useAuth();
@@ -80,7 +80,7 @@ export const ModalEditProfile = ({ toggleModal }: IModalCreateContactProps) => {
         <InputMain
           type="number"
           id="phone-2"
-          defaultValue={user?.phone[0]}
+          defaultValue={user?.phone[1]}
           {...register("phone.1")}
         />
 

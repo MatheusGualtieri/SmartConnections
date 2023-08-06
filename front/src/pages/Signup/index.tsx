@@ -29,7 +29,6 @@ export const Signup = () => {
 
   const submit: SubmitHandler<TUserRequest> = async (data) => {
     createUser(data);
-    navigate("/");
   };
 
   return (

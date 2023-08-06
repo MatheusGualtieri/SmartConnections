@@ -3,7 +3,7 @@ import { z } from "zod";
 export const contactSchema = z.object({
   id: z.number(),
   full_name: z.string(),
-  emails: z.array(z.string().max(120).email()),
+  emails: z.array(z.string().max(120).email().or(z.literal(""))),
   createdAt: z.string(),
   phone: z.array(z.any()).nonempty(),
 });

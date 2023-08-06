@@ -30,15 +30,7 @@ interface IContactProvider {
       | undefined
     >
   >;
-  contact:
-    | {
-        id: number;
-        full_name: string;
-        emails: string[];
-        createdAt: string;
-        phone: [any, ...any[]];
-      }
-    | undefined;
+  contact: TContact | undefined;
 }
 
 export const ContactContext = createContext({} as IContactProvider);
@@ -54,8 +46,6 @@ export const ContactProvider = ({ children }: IContactProviderProps) => {
   const listContact = async () => {
     try {
       const response = await api.get(`users/${userId}/contacts`);
-      console.log(userId);
-      console.log(response);
       setContacts(response.data);
     } catch (error) {
       console.log(error);
@@ -64,6 +54,12 @@ export const ContactProvider = ({ children }: IContactProviderProps) => {
 
   const createContact = async (data: TContactRequest) => {
     try {
+      if (data.phone[1] === "0" || data.phone[1] === "") {
+        data.phone.pop();
+      }
+      if (data.emails[1] === "") {
+        data.emails.pop();
+      }
       const phonesNumber = data.phone.map((number) => Number(number));
       const newContact = { ...data, phone: phonesNumber };
       await api.post<TContact>(`users/${userId}/contacts`, newContact);
@@ -77,10 +73,21 @@ export const ContactProvider = ({ children }: IContactProviderProps) => {
     try {
       let newContact: any = data;
       if (data.phone) {
+        for (let i = 0; i < data.phone.length; i++) {
+          if (data.phone[i] == "0") {
+            data.phone.splice(i);
+          }
+        }
         const phonesNumber = data.phone.map((number) => Number(number));
         newContact = { ...data, phone: phonesNumber };
       }
-
+      if (data.emails) {
+        for (let i = 0; i < data.emails.length; i++) {
+          if (data.emails[i] == "0") {
+            data.emails.splice(i);
+          }
+        }
+      }
       await api.patch<TContact>(
         `users/${userId}/contacts/${contactId}`,
         newContact
