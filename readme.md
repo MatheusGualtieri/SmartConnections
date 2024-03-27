@@ -1,8 +1,8 @@
 # SmatConnections
-This is a full stack project, with its objective being the management of an user contacts.
+Este é um projeto full stack, tendo como objetivo a gestão dos contatos de um usuário.
 
 # Installation
-To install the the project, you must enter both folders(back and front), and use the package manager npm to install it's dependencies.
+Para instalar o projeto, você deve inserir as duas pastas (back e front) e usar o gerenciador de pacotes npm para instalar suas dependências.
 
 Back
 ```bash
@@ -16,21 +16,21 @@ cd front
 npm install
 ```
 
-# Configuring Environment Variables
-The backend uses 2 Environment Variables, being the DATABASE_URL(used to acces the database) and SECRET_KEY(used to encript passwords).
-To configure these variables, create an .env and put this:
+#Variáveis de Ambiente
+O backend utiliza 2 variáveis ​​de ambiente, sendo DATABASE_URL (usada para acessar o banco de dados) e SECRET_KEY (usada para criptografar senhas).
+Para configurar essas variáveis, crie um .env e coloque isto:
 
 ```env
 DATABASE_URL="postgres://user:password@host:port/db"
 SECRET_KEY="YourSecretKey"
 ```
-*An example of the .env is alredy on the back folder
+*Um exemplo do .env já está na pasta back
 
-# Running
-For runnin the project, just use npm run dev on both folders(back and front)
+#Rodar
+Para executar o projeto, basta usar npm run dev em ambas as pastas(back and front)
 
 ```bash
 npm run dev
 ```
-# Documentation
-You can acces the documentation for the API after running the back project, being http://localhost:3000/docs
+# Documentação
+Você pode acessar a documentação da API após executar o backend, sendo http://localhost:3000/docs
